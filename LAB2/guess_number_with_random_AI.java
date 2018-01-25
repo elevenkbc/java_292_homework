@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Expection_of_guess_number {
+public class guess_number_with_random_AI {
 	public static void main(String[] args) {
 		// 電腦隨機猜數字次數，總共模擬simulated_num次，並且計算勝利機率期望值
 		Scanner input = new Scanner(System.in);

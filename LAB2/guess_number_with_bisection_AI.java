@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class Exepection_of_guess_number_bisection_com {
+public class guess_number_with_bisection_AI {
 	public static void main(String[] args) {
 		// 電腦隨機猜數字次數，總共模擬simulated_num次，並且計算勝利機率期望值
 		// 輸入最大模擬次數 N
