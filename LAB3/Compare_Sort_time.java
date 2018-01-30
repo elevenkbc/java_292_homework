@@ -1,9 +1,9 @@
-import java.util.Arrays; //¬°¤F¨Ï¥Î Array copy
+import java.util.Arrays; //ç‚ºäº†ä½¿ç”¨ Array copy
 
 public class Compare_Sort_time {
 	public static void main(String[] args) {
-		// ²£¥Í¤@­Ó N*2000ªº 2D array
-		// ¨ä¨C¤@­Ó row ¬°¤@²Õ­n±Æ§Çªº array
+		// ç”¢ç”Ÿä¸€å€‹ N*2000çš„ 2D array
+		// å…¶æ¯ä¸€å€‹ row ç‚ºä¸€çµ„è¦æ’åºçš„ array
 		int N = 500;
 		int[][] test_data = new int[N][2000];
 		for (int i = 0; i < N; i++) {
@@ -11,14 +11,14 @@ public class Compare_Sort_time {
 				test_data[i][j] = j;
 		}
 
-		// §â¨C¤@­Órow ³£¬~¶Ã
+		// æŠŠæ¯ä¸€å€‹row éƒ½æ´—äº‚
 		for (int i = 0; i < N; i++) {
 			shuffle(test_data[i]);
 		}
 
-		// Copy test_data Åı InsertionSort ±Æ§Ç
-		// ©Ò¦³ªº±Æ§Çªk³£¬O¹ï¬Û¦P¶¶§Çªºtest_data¡A´ú¸Õ¤~¤½¥­
-		// ½Æ»s2D test_data
+		// Copy test_data
+		// ä½¿å¾—æ‰€æœ‰çš„æ’åºæ³•ï¼Œéƒ½æ˜¯å°ç›¸åŒé †åºçš„test_dataåšæ’åºï¼Œé€™æ¨£æ¸¬è©¦æ‰å…¬å¹³
+		// è¤‡è£½2D test_data
 		int[][] data_InsertionSort = new int[N][2000];
 		for (int i = 0; i < N; i++) {
 			data_InsertionSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
@@ -35,41 +35,41 @@ public class Compare_Sort_time {
 		for (int i = 0; i < N; i++) {
 			data_QuickSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
 		}
-		// ½Æ»s2D test_data µ²§ô
+		// è¤‡è£½2D test_data çµæŸ
 
-		System.out.printf("%d µ§ªø«×¬° 2000 ªºint[] ±Æ§Ç:\n", N);
+		System.out.printf("%d ç­†é•·åº¦ç‚º 2000 çš„int[] æ’åº:\n", N);
 		long t1, t2;
 		t1 = System.currentTimeMillis();
-		// ¹ï¨C¤@­Órow °µInsertionSort¡A¨Ã­p®É
+		// å°æ¯ä¸€å€‹row åšInsertionSortï¼Œä¸¦è¨ˆæ™‚
 		for (int i = 0; i < N; i++) {
 			InsertionSort(data_InsertionSort[i]);
 		}
 		t2 = System.currentTimeMillis();
-		System.out.printf("InsertionSortªá¤F¡G %d ²@¬í\n", ((t2 - t1)));
+		System.out.printf("InsertionSortèŠ±äº†ï¼š %d æ¯«ç§’\n", ((t2 - t1)));
 
 		t1 = System.currentTimeMillis();
-		// ¹ï¨C¤@­Órow °µBubbleSort¡A¨Ã­p®É
+		// å°æ¯ä¸€å€‹row åšBubbleSortï¼Œä¸¦è¨ˆæ™‚
 		for (int i = 0; i < N; i++) {
 			BubbleSort(data_BubbleSort[i]);
 		}
 		t2 = System.currentTimeMillis();
-		System.out.printf("BubbleSortªá¤F¡G %d ²@¬í\n", ((t2 - t1)));
+		System.out.printf("BubbleSortèŠ±äº†ï¼š %d æ¯«ç§’\n", ((t2 - t1)));
 
 		t1 = System.currentTimeMillis();
-		// ¹ï¨C¤@­Órow °µSelectionSort¡A¨Ã­p®É
+		// å°æ¯ä¸€å€‹row åšSelectionSortï¼Œä¸¦è¨ˆæ™‚
 		for (int i = 0; i < N; i++) {
 			SelectionSort(data_SelectionSort[i]);
 		}
 		t2 = System.currentTimeMillis();
-		System.out.printf("SelectionSortªá¤F¡G %d ²@¬í\n", ((t2 - t1)));
+		System.out.printf("SelectionSortèŠ±äº†ï¼š %d æ¯«ç§’\n", ((t2 - t1)));
 
 		t1 = System.currentTimeMillis();
-		// ¹ï¨C¤@­Órow °µQuick_Sort¡A¨Ã­p®É
+		// å°æ¯ä¸€å€‹row åšQuick_Sortï¼Œä¸¦è¨ˆæ™‚
 		for (int i = 0; i < N; i++) {
 			Quick_Sort(data_QuickSort[i], 0, 1999);
 		}
 		t2 = System.currentTimeMillis();
-		System.out.printf("Quick_Sortªá¤F¡G %d ²@¬í\n", ((t2 - t1)));
+		System.out.printf("Quick_SortèŠ±äº†ï¼š %d æ¯«ç§’\n", ((t2 - t1)));
 
 	}
 
@@ -82,12 +82,12 @@ public class Compare_Sort_time {
 	}
 
 	public static int Separate(int[] x, int left, int right) {
-		// ¤@¼hªºSeparate
-		// left »P right ·í«e­n¤ÀÂ÷ªº¤l°}¦C¤¤ªº¶}©l¯Á¤Ş »Pµ²§ô¯Á¤Ş
-		// ¦^¶Ç­È¬°Separate «á povit ¦ì¸mªºªº¯Á¤Ş
-		int Povit = x[right]; // ®³³Ì«á¤@­Óelement ·í§@Povit
-		int i = left - 1;// iªí¥Ü ¤p©óPovitªº¤l°}¦Cªº³Ì«á¤@­Ó¤¸¦ì¸m
-		// j ¬°²{¦b¥¿¦b§PÂ_ªº¤U¼Ğ¦ì¸m
+		// ä¸€å±¤çš„Separate
+		// left èˆ‡ right ç•¶å‰è¦åˆ†é›¢çš„å­é™£åˆ—ä¸­çš„é–‹å§‹ç´¢å¼• èˆ‡çµæŸç´¢å¼•
+		// å›å‚³å€¼ç‚ºSeparate å¾Œ povit ä½ç½®çš„çš„ç´¢å¼•
+		int Povit = x[right]; // æ‹¿æœ€å¾Œä¸€å€‹element ç•¶ä½œPovit
+		int i = left - 1;// iè¡¨ç¤º å°æ–¼Povitçš„å­é™£åˆ—çš„æœ€å¾Œä¸€å€‹å…ƒä½ç½®
+		// j ç‚ºç¾åœ¨æ­£åœ¨åˆ¤æ–·çš„ä¸‹æ¨™ä½ç½®
 		for (int j = left; j < right; j++) {
 			if (x[j] < Povit) {
 				i += 1;
@@ -98,7 +98,7 @@ public class Compare_Sort_time {
 				x[i] = temp;
 			}
 		}
-		// ³Ì«á±N Povit ©ñ¦^¥¦ªº¦ì¸m
+		// æœ€å¾Œå°‡ Povit æ”¾å›å®ƒçš„ä½ç½®
 		// swap
 		int temp;
 		temp = x[i + 1];
