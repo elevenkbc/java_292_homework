@@ -15,30 +15,29 @@ public class Compare_Sort_time {
 		for (int i = 0; i < N; i++) {
 			shuffle(test_data[i]);
 		}
-		
-		//Copy test_data 讓 InsertionSort 排序
-		//所有的排序法都是對相同順序的test_data，測試才公平
-		//複製2D test_data
-		int[][] data_InsertionSort= new int[N][2000];
-		for(int i = 0; i<N;i++) {
+
+		// Copy test_data 讓 InsertionSort 排序
+		// 所有的排序法都是對相同順序的test_data，測試才公平
+		// 複製2D test_data
+		int[][] data_InsertionSort = new int[N][2000];
+		for (int i = 0; i < N; i++) {
 			data_InsertionSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
 		}
-		int[][] data_BubbleSort= new int[N][2000];
-		for(int i = 0; i<N;i++) {
+		int[][] data_BubbleSort = new int[N][2000];
+		for (int i = 0; i < N; i++) {
 			data_BubbleSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
 		}
-		int[][] data_SelectionSort= new int[N][2000];
-		for(int i = 0; i<N;i++) {
+		int[][] data_SelectionSort = new int[N][2000];
+		for (int i = 0; i < N; i++) {
 			data_SelectionSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
 		}
-		int[][] data_QuickSort= new int[N][2000];
-		for(int i = 0; i<N;i++) {
+		int[][] data_QuickSort = new int[N][2000];
+		for (int i = 0; i < N; i++) {
 			data_QuickSort[i] = Arrays.copyOf(test_data[i], test_data[i].length);
 		}
-		//複製2D test_data 結束
-		
-		
-		System.out.printf("%d 筆長度為 2000 的int[] 排序:\n",N);
+		// 複製2D test_data 結束
+
+		System.out.printf("%d 筆長度為 2000 的int[] 排序:\n", N);
 		long t1, t2;
 		t1 = System.currentTimeMillis();
 		// 對每一個row 做InsertionSort，並計時
@@ -48,8 +47,6 @@ public class Compare_Sort_time {
 		t2 = System.currentTimeMillis();
 		System.out.printf("InsertionSort花了： %d 毫秒\n", ((t2 - t1)));
 
-		
-		
 		t1 = System.currentTimeMillis();
 		// 對每一個row 做BubbleSort，並計時
 		for (int i = 0; i < N; i++) {
@@ -58,8 +55,6 @@ public class Compare_Sort_time {
 		t2 = System.currentTimeMillis();
 		System.out.printf("BubbleSort花了： %d 毫秒\n", ((t2 - t1)));
 
-		
-		
 		t1 = System.currentTimeMillis();
 		// 對每一個row 做SelectionSort，並計時
 		for (int i = 0; i < N; i++) {
@@ -68,8 +63,6 @@ public class Compare_Sort_time {
 		t2 = System.currentTimeMillis();
 		System.out.printf("SelectionSort花了： %d 毫秒\n", ((t2 - t1)));
 
-		
-		
 		t1 = System.currentTimeMillis();
 		// 對每一個row 做Quick_Sort，並計時
 		for (int i = 0; i < N; i++) {
@@ -77,9 +70,6 @@ public class Compare_Sort_time {
 		}
 		t2 = System.currentTimeMillis();
 		System.out.printf("Quick_Sort花了： %d 毫秒\n", ((t2 - t1)));
-
-		
-		
 
 	}
 
