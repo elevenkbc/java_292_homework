@@ -172,8 +172,9 @@ public class SnakeGame_nowall extends JFrame {
 			System.out.printf("#");
 		System.out.printf("\n");
 
-		// 地圖中間
+		//如果還在進行遊戲的話
 		if (!Gameover) {
+			// 地圖中間
 			for (int i = 0; i < H; i++) {
 				for (int j = 0; j < W + 2; j++) {
 					if (j == 0) {
@@ -202,6 +203,7 @@ public class SnakeGame_nowall extends JFrame {
 				System.out.printf("\n");
 			}
 		}else {
+		//如果已經GG了，列印GAME OVER 畫面
 			for (int i = 0; i < H; i++) {
 				if (i!= H/2) {
 					for (int j = 0; j < W + 2; j++) {
