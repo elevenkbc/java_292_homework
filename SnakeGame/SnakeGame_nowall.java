@@ -1,3 +1,4 @@
+
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
@@ -66,6 +67,7 @@ class food {
 public class SnakeGame_nowall extends JFrame {
 
 	static char dir = '0';// 原始狀態是停止的
+	static char Predir = '0';
 	static int score = 0;
 	static boolean GameOver = false;
 	static int Width = 20; 
@@ -86,6 +88,7 @@ public class SnakeGame_nowall extends JFrame {
 			Update(S, F, M, dir, Width, Height);
 			Draw(S, M, F, GameOver);
 			Speed = UpdateSpeed(score);
+			System.out.printf("dir = %c, Predir = %c\n",dir, Predir);
 		}
 
 	}
@@ -99,10 +102,12 @@ public class SnakeGame_nowall extends JFrame {
 			return 100;
 		}
 		
-		//分數超過100達到最快
-		
+		//分數超過170達到最快
+
 	}
+
 	public static void Update(snake s, food f, map m, char dir, int W, int H) {
+
 		if (s.L > 0) {
 			// 若是有尾巴，就更新尾巴
 			for (int i = s.L - 1; i >= 1; i--) {
@@ -114,7 +119,7 @@ public class SnakeGame_nowall extends JFrame {
 			s.tailx[0] = s.x;
 			s.taily[0] = s.y;
 		}
-		//更新頭的位置
+		// 更新頭的位置
 		switch (dir) {
 		case 'w':
 			s.y -= 1;
@@ -129,16 +134,16 @@ public class SnakeGame_nowall extends JFrame {
 			s.x += 1;
 			break;
 		}
-		// 是否撞到牆 
-		if((s.x == 0)||(s.x == m.width+1)||(s.y == -1)||(s.y == m.height)) {
-			//撞到牆壁後，就從對面的牆壁跑出來
-			if(s.x == 0){
+		// 是否撞到牆
+		if ((s.x == 0) || (s.x == m.width + 1) || (s.y == -1) || (s.y == m.height)) {
+			// 撞到牆壁後，就從對面的牆壁跑出來
+			if (s.x == 0) {
 				s.x = m.width;
-			} else if(s.x == m.width+1){
+			} else if (s.x == m.width + 1) {
 				s.x = 1;
-			} else if(s.y == -1){
+			} else if (s.y == -1) {
 				s.y = m.height - 1;
-			} else { // s.y = m.height 
+			} else { // s.y = m.height
 				s.y = 0;
 			}
 		}
@@ -172,7 +177,7 @@ public class SnakeGame_nowall extends JFrame {
 			System.out.printf("#");
 		System.out.printf("\n");
 
-		//如果還在進行遊戲的話
+		// 如果還在進行遊戲的話
 		if (!Gameover) {
 			// 地圖中間
 			for (int i = 0; i < H; i++) {
@@ -202,10 +207,10 @@ public class SnakeGame_nowall extends JFrame {
 				}
 				System.out.printf("\n");
 			}
-		}else {
-		//如果已經GG了，列印GAME OVER 畫面
+		} else {
+			// 如果已經GG了，列印GAME OVER 畫面
 			for (int i = 0; i < H; i++) {
-				if (i!= H/2) {
+				if (i != H / 2) {
 					for (int j = 0; j < W + 2; j++) {
 						if (j == 0) {
 							System.out.printf("#");
@@ -216,29 +221,29 @@ public class SnakeGame_nowall extends JFrame {
 						}
 					}
 					System.out.printf("\n");
-				}else {
-					 
+				} else {
+
 					System.out.printf("#");
-					for (int j = 0; j<(W-10)/2; j++) {
+					for (int j = 0; j < (W - 10) / 2; j++) {
 						System.out.printf(" ");
 					}
 					System.out.printf("GAME OVER!");
-					for (int j = 0; j<(W-10)/2; j++) {
+					for (int j = 0; j < (W - 10) / 2; j++) {
 						System.out.printf(" ");
 					}
-					if(W%2 != 0)
+					if (W % 2 != 0)
 						System.out.printf(" ");
 					System.out.printf("#\n");
-				}	
+				}
 			}
-			
+
 		}
-		
+
 		for (int i = 0; i < W + 2; i++)
 			System.out.printf("#");
 		System.out.printf("\n");
 		System.out.println("Score : " + score);
-		System.out.println("Speed : " + Speed +"%");
+		System.out.println("Speed : " + Speed + "%");
 	}
 
 	public SnakeGame_nowall() { // constructor
@@ -248,7 +253,13 @@ public class SnakeGame_nowall extends JFrame {
 		this.setVisible(true);
 		this.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
+				Predir = dir;
+				//如果目前的方向，跟上個方向相反
+				//則將目前方向設定成上一個方向
 				dir = e.getKeyChar();
+				if(((dir =='s')&&(Predir == 'w'))||((dir =='w')&&(Predir == 's'))||((dir =='a')&&(Predir == 'd'))||((dir =='d')&&(Predir == 'a'))) {
+					dir = Predir;
+				}
 			}
 		});
 	}
