@@ -88,8 +88,7 @@ public class SnakeGame_nowall extends JFrame {
 			Update(S, F, M, dir, Width, Height);
 			Draw(S, M, F, GameOver);
 			Speed = UpdateSpeed(score);
-			System.out.printf("dir = %c, Predir = %c\n",dir, Predir);
-		}
+			}
 
 	}
 	
@@ -120,6 +119,12 @@ public class SnakeGame_nowall extends JFrame {
 			s.taily[0] = s.y;
 		}
 		// 更新頭的位置
+		
+		//如果目前的方向，跟上個方向相反
+		//則將目前方向設定成上一個方向
+		if(((dir =='s')&&(Predir == 'w'))||((dir =='w')&&(Predir == 's'))||((dir =='a')&&(Predir == 'd'))||((dir =='d')&&(Predir == 'a'))) {
+			dir = Predir;
+		}
 		switch (dir) {
 		case 'w':
 			s.y -= 1;
@@ -134,6 +139,7 @@ public class SnakeGame_nowall extends JFrame {
 			s.x += 1;
 			break;
 		}
+		Predir = dir;
 		// 是否撞到牆
 		if ((s.x == 0) || (s.x == m.width + 1) || (s.y == -1) || (s.y == m.height)) {
 			// 撞到牆壁後，就從對面的牆壁跑出來
@@ -253,13 +259,7 @@ public class SnakeGame_nowall extends JFrame {
 		this.setVisible(true);
 		this.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				Predir = dir;
-				//如果目前的方向，跟上個方向相反
-				//則將目前方向設定成上一個方向
-				dir = e.getKeyChar();
-				if(((dir =='s')&&(Predir == 'w'))||((dir =='w')&&(Predir == 's'))||((dir =='a')&&(Predir == 'd'))||((dir =='d')&&(Predir == 'a'))) {
-					dir = Predir;
-				}
+				dir = e.getKeyChar();				
 			}
 		});
 	}
