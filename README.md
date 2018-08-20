@@ -1,16 +1,20 @@
-## Snake Game in Console with Java 
+## My Java course mini project
+
+
+
+## 1. Snake Game in Console with Java 
 
 Demo video
 
-https://www.youtube.com/watch?v=xHfpO2XOVMI
+![image](https://media.giphy.com/media/lcjilYWJdD6duuAXjy/giphy.gif)
 
-
-
-## Tetris Game in Console with Java
+## 2. Tetris Game in Console with Java
 
 Demo video
 
-https://www.youtube.com/watch?v=J2O_-nffqmI&feature=youtu.be
+![image](https://media.giphy.com/media/yHTRYZoftUMlPLm5db/giphy.gif)
+
+
 
 
 
